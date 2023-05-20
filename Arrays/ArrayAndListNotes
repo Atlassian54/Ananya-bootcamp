@@ -1,0 +1,83 @@
+public class ListHeteroExample {
+
+
+    public static void main(String[] args) {
+        // write your code here
+        /**
+         * 1. Homogenity: Having the same kind of data inside the data structure.
+         *              Adv: TypeSafety
+         *
+         * 2. Indexing : Complexity Time : O(1)
+         *                          Space:
+         *
+         *
+         * 3. Contiguous : RAM
+         *                 DISK
+         *                  int i=0; --> Inmemory, heap storage , stays till the app is running.
+         *          *                               hardware storage --> Harddisk, database (harddisk + Control mechanism + QueryParser)
+         *          *
+         *          *                               blocks
+         *          *                               [alot of data] , [], [] , .......
+         *          *
+         *          *                               100 values in Array
+         *          *                               block10 --> [reserved 100 memory for me]
+         *          *                                          if I know the address of 0th record here of this block. [5]
+         *
+         *
+         *
+         */
+        int testArr[];
+
+
+        /** List data structure
+         * 1. home/hetero
+         * 2. Supports indexing. ---> O(N)
+         *
+         *
+         */
+
+        List heteroList = new LinkedList();
+        heteroList.add(1);
+        heteroList.add("hello");
+        System.out.println(heteroList.get(1));
+
+        heteroList.get(1);
+
+        String hello;
+        List studentEmployeeList = new LinkedList();
+        studentEmployeeList.add(new Student(1, "CSE"));
+        studentEmployeeList.add(new Employee(1, "SDE1"));
+
+        for (int i = 0; i < studentEmployeeList.size(); i++) {
+            if (studentEmployeeList.get(i) instanceof Student) {
+                Employee student = (Employee) studentEmployeeList.get(i);
+                System.out.println(student.empId);
+            } else if (studentEmployeeList.get(i) instanceof Employee) {
+                Employee emp = (Employee) studentEmployeeList.get(i);
+                System.out.println(emp.empId);
+            }
+        }
+
+    }
+
+
+    static class Student {
+        Integer rollNo;
+        String course; //CSE, ECE
+
+        public Student(Integer rollNo, String course) {
+            this.rollNo = rollNo;
+            this.course = course;
+        }
+    }
+
+    static class Employee {
+        Integer empId;
+        String department; //SDE, ApplicationDeveloper
+
+        public Employee(Integer empId, String department) {
+            this.empId = empId;
+            this.department = department;
+        }
+    }
+}
